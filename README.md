@@ -135,21 +135,4 @@ Two regression models were trained:
 
 ![House Price Prediction Block Diagram](Images/House_Price_Block_Diagram.png)
 
-## 🔄 PROJECT WORKFLOW
 
-1. Data Loading
-2. Data Analysis
-3. Data Integration
-4. Exploratory Data Analysis (EDA)
-5. Missing Value Visualization & Handling
-6. Drop Irrelevant Columns
-7. Missing Value Imputation
-8. Feature Transformation & Encoding
-9. Train-Test Split
-10. Cross Validation
-11. Model Selection
-12. Model Training
-13. Model Evaluation
-14. Save Model (Pickle File)
-
-Project updated 🚀
