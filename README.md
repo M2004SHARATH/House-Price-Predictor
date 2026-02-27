@@ -63,3 +63,5 @@ The project uses three files:
 12. Model Training
 13. Model Evaluation
 14. Save Model (Pickle File)
+
+Project updated 🚀
