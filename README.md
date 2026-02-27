@@ -69,10 +69,15 @@ The project uses three files:
 **Features include:**
 
  Area (square feet)
+ 
  Bedrooms
+ 
  Bathrooms
+ 
  Location
+ 
  Amenities
+ 
  Property characteristics
 
 ---
