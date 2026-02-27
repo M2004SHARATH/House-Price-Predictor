@@ -16,10 +16,15 @@ The goal is to build a reliable model that can estimate property prices accurate
 ##  OBJECTIVES
 
  Understand housing dataset
+ 
  Clean and preprocess data
+ 
  Engineer useful features
+ 
  Train multiple regression models
+ 
  Evaluate performance using proper metrics
+ 
  Select the best model for prediction
 
 ---
