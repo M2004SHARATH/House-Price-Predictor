@@ -78,56 +78,56 @@ The House Price Prediction project follows a systematic machine learning workflo
 
 **Step 1: Data Understanding**
 
-*Loaded the housing dataset
-*Examined dataset structure and feature descriptions
-*Identified independent variables and target variable (SalePrice)
-*Understood numerical and categorical features
+* Loaded the housing dataset
+* Examined dataset structure and feature descriptions
+* Identified independent variables and target variable (SalePrice)
+* Understood numerical and categorical features
 
 **Step 2: Exploratory Data Analysis (EDA) & Correlation Analysis**
 
-*Analyzed distribution of house prices
-*Visualized feature relationships
-*Generated correlation heatmap
-*Identified important variables influencing price
+* Analyzed distribution of house prices
+* Visualized feature relationships
+* Generated correlation heatmap
+* Identified important variables influencing price
 
 **Step 3: Data Cleaning**
 
-*Handled missing values using suitable imputation techniques
-*Encoded categorical features into numerical format
-*Removed irrelevant columns
-*Prepared clean dataset for modeling
+* Handled missing values using suitable imputation techniques
+* Encoded categorical features into numerical format
+* Removed irrelevant columns
+* Prepared clean dataset for modeling
 
 **Step 4: Train-Test Split**
 
-*Split dataset into training and testing data
-*Applied scaling when required
-*Ensured unbiased model validation
+* Split dataset into training and testing data
+* Applied scaling when required
+* Ensured unbiased model validation
 
 **Step 5: Model Training**
 
 Two regression models were trained:
 🔹 Linear Regression
-*Used as a baseline model
-*Learned linear relationships between features and house price
+* Used as a baseline model
+* Learned linear relationships between features and house price
 
 🔹 Random Forest Regressor
-*Tree-based ensemble model
-*Captured complex non-linear relationships
-*Improved prediction performance
+* Tree-based ensemble model
+* Captured complex non-linear relationships
+* Improved prediction performance
 
 **Step 6: Model Evaluation & Comparison**
 
-*Models were evaluated using:
-*Root Mean Squared Error (RMSE)
-*R² Score
-*Feature Importance Analysis
-*The best-performing model was selected based on evaluation results.
+* Models were evaluated using:
+* Root Mean Squared Error (RMSE)
+* R² Score
+* Feature Importance Analysis
+* The best-performing model was selected based on evaluation results.
 
 **Step 7: Final Prediction Model**
 
-*Selected optimized model
-*Generated house price predictions
-*Prepared model for real-world usage
+* Selected optimized model
+* Generated house price predictions
+* Prepared model for real-world usage
 
 ---
 
