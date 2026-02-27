@@ -131,6 +131,10 @@ Two regression models were trained:
 
 ---
 
+## BLOCK DIAGRAM
+
+![House Price Prediction Block Diagram](Images/House_Price_Block_Diagram.png)
+
 ## 🔄 PROJECT WORKFLOW
 
 1. Data Loading
