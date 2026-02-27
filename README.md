@@ -105,8 +105,8 @@ The House Price Prediction project follows a systematic machine learning workflo
 
 **Step 5: Model Training**
 
-Two regression models were trained:
-🔹 Linear Regression
+Two regression models were trained: 
+🔹  Linear Regression
 * Used as a baseline model
 * Learned linear relationships between features and house price
 
