@@ -1,6 +1,6 @@
-# 🏠 HOUSE PRICE PREDICTION - MACHINE LEARNING PROJECT
+#  HOUSE PRICE PREDICTION - MACHINE LEARNING PROJECT
 
-## 📌 PROJECT OVERVIEW
+##  PROJECT OVERVIEW
 
 This project predicts the selling price of a house based on various features such as area, number of bedrooms, bathrooms, location, and amenities.
 
@@ -13,7 +13,7 @@ The goal is to build a reliable model that can estimate property prices accurate
 
 ---
 
-## 🎯 OBJECTIVES
+##  OBJECTIVES
 
 * Understand housing dataset
 * Clean and preprocess data
@@ -24,7 +24,7 @@ The goal is to build a reliable model that can estimate property prices accurate
 
 ---
 
-## ✅ PROBLEM STATEMENT
+## PROBLEM STATEMENT
 
 In the real estate industry, accurately determining the price of a house is a challenging task. Property prices are often estimated based on manual judgment, market assumptions, or limited comparisons, which can lead to incorrect pricing decisions.
 
@@ -38,7 +38,7 @@ Real estate agencies face difficulty in decision making
 
 The goal of this project is:
 
-👉 **To predict house selling prices based on property characteristics using supervised machine learning techniques**.
+**To predict house selling prices based on property characteristics using supervised machine learning techniques**.
 
 By building a house price prediction model, stakeholders can:
 
@@ -49,7 +49,7 @@ By building a house price prediction model, stakeholders can:
 
 ---
 
-## 📊 DATASET USED
+##  DATASET USED
 
 The project uses three files:
 
@@ -72,7 +72,7 @@ The project uses three files:
 
 ---
 
-## ⚙️ PROJECT APPROACH
+##  PROJECT APPROACH
 
 The House Price Prediction project follows a systematic machine learning workflow to build an accurate predictive model for estimating property prices.
 
@@ -106,11 +106,11 @@ The House Price Prediction project follows a systematic machine learning workflo
 **Step 5: Model Training**
 
 Two regression models were trained: 
-🔹  Linear Regression
+-  Linear Regression
 * Used as a baseline model
 * Learned linear relationships between features and house price
 
-🔹 Random Forest Regressor
+- Random Forest Regressor
 * Tree-based ensemble model
 * Captured complex non-linear relationships
 * Improved prediction performance
