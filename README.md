@@ -134,7 +134,7 @@ Two regression models were trained:
 ## BLOCK DIAGRAM
 
 <p align="center">
-  <img src="Images/House_Price_Block_Diagram.png" width="600"/>
+  <img src="Images/House_Price_Block_Diagram.png" width="500"/>
   <br>
   <em>Figure: House Price Prediction Block Diagram</em>
 </p>
