@@ -252,3 +252,4 @@ if st.button("🔮 Predict Price",type = "primary"):
             Estimated House Price:{price}
         </div>
     """, unsafe_allow_html=True)
+
