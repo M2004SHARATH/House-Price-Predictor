@@ -3,6 +3,8 @@
 ## LIVE DEMO :
 https://housepricepredictor2026.streamlit.app/
 
+---
+
 ##  PROJECT OVERVIEW
 
 This project predicts the selling price of a house based on various features such as area, number of bedrooms, bathrooms, location, and amenities.
