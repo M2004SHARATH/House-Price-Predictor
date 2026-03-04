@@ -73,11 +73,11 @@ st.markdown('<div class="sub-title">Machine Learning Based Real Estate Valuation
 
 # CHECK MODEL FILES
 
-if not os.path.exists("model_columns.pkl"):
+if not os.path.exists("pickle Files/Random Forest/model_columns.pkl"):
     st.error("Model files missing. Train the model first.")
     st.stop()
 
-model_columns = joblib.load("pickle files/Random Forest/model_columns.pkl")
+model_columns = joblib.load("pickle Files/Random Forest/model_columns.pkl")
 
 
 # MODEL SELECTION
@@ -90,9 +90,9 @@ model_choice = st.selectbox(
 )
 
 if model_choice == "Random Forest (Recommended)":
-    model = joblib.load("pickle files/Random Forest/random_forest_model.pkl")
+    model = joblib.load("pickle Files/Random Forest/random_forest_model.pkl")
 else:
-    model = joblib.load("pickle files/Linear Regression/linear_regression_model.pkl")
+    model = joblib.load("pickle Files/Linear Regression/linear_regression_model.pkl")
 
 # =====================================
 # PROPERTY DETAILS
@@ -172,4 +172,5 @@ if predict_button:
         <div style="font-size:18px;color:#555">Predicted Market Price</div>
         <div class="price-value">$ {prediction:,.2f}</div>
     </div>
+
     """, unsafe_allow_html=True)
