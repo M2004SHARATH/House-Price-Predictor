@@ -3,174 +3,177 @@ import pandas as pd
 import joblib
 import os
 
-
-st.set_page_config(
-    page_title="House Price Prediction",
-    page_icon="🏠",
-    layout="wide"
-)
-
-
+# --- PAGE CONFIG ---
+st.set_page_config(page_title="House Price Prediction", page_icon="🏠", layout="wide")
 
 st.markdown("""
 <style>
+    /* Darken the background slightly to make white cards pop */
+    .stApp {
+        background-color: #f0f2f6;
+    }
 
-body {
-    background-color: white;
-}
+    /* Sidebar - Solid Navy Blue */
+    [data-testid="stSidebar"] {
+        background-color: #002366 !important;
+    }
 
-.main-title{
-    font-size:42px;
-    font-weight:700;
-    text-align:center;
-    color:#0b3d91;
-}
+    /* FEATURE CARDS - This makes inputs highly visible */
+    div[data-testid="column"] {
+        background-color: #ffffff;
+        border: 2px solid #002366; /* Bold Blue Border */
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
 
-.sub-title{
-    text-align:center;
-    font-size:18px;
-    color:#333;
-    margin-bottom:30px;
-}
+    /* BOLD LABELS */
+    .stMarkdown h3, label p {
+        color: #002366 !important;
+        font-weight: 800 !important;
+        font-size: 1.2rem !important;
+    }
 
-.stButton>button{
-    background:#0b3d91;
-    color:white;
-    height:48px;
-    width:100%;
-    border-radius:6px;
-    font-size:18px;
-    border:none;
-}
+    /* BUTTON STYLING */
+    .stButton>button {
+        background-color: #002366;
+        color: white;
+        height: 60px;
+        width: 100%;
+        border-radius: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        border: 4px solid #0056b3;
+    }
 
-.stButton>button:hover{
-    background:#174db8;
-}
+    /* RESULT BOX */
+    .result-banner {
+        background-color: #002366;
+        color: #ffffff;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        border: 5px solid #0056b3;
+    }
+            /* FORCED VISIBILITY FOR NAVIGATION */
+    [data-testid="stSidebarNav"] {
+        background-color: transparent !important;
+    }
 
-.result-box{
-    background:white;
-    padding:35px;
-    border-radius:10px;
-    border:1px solid #e6e6e6;
-    text-align:center;
-}
+    /* Make the Radio labels (the text) super bright and bold */
+    [data-testid="stSidebar"] .st-bd, [data-testid="stSidebar"] .st-ae {
+        color: #ffffff !important;
+    }
 
-.price-value{
-    font-size:42px;
-    font-weight:bold;
-    color:#0b3d91;
-}
+   /* Target the text labels specifically inside the sidebar radio group */
+    [data-testid="stSidebar"] div[role="radiogroup"] label p {
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        opacity: 1 !important; /* Prevents unselected options from fading */
+    }
 
+    /* Fix for newer Streamlit versions that use different span classes */
+    [data-testid="stSidebar"] .st-ae div, [data-testid="stSidebar"] .st-af {
+        color: white !important;
+    }
+
+    /* Ensure the radio button circles are also bright */
+    [data-testid="stSidebar"] div[role="radiogroup"] [data-testid="stWidgetLabel"] {
+        color: white !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
-
-# HEADER
-
-st.markdown('<div class="main-title">House Price Prediction System</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">Machine Learning Based Real Estate Valuation</div>', unsafe_allow_html=True)
-
-
-# CHECK MODEL FILES
-
+# --- NAVIGATION ---
+with st.sidebar:
+    st.markdown("<h1 style='color:white; text-align:center;'>🧭 NAVIGATION</h1>", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+    page = st.radio(
+        "SELECT VIEW:", 
+        ["🏠 Prediction Tool", "⚙️ Model Settings"],
+        key="nav_menu"
+    )
+    
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown("<p style='color:white; opacity:0.7; text-align:center;'>Real Estate AI v2.0</p>", unsafe_allow_html=True)
+# Load Column Names
 if not os.path.exists("pickle Files/Random Forest/model_columns.pkl"):
-    st.error("Model files missing. Train the model first.")
+    st.error("Missing Model Files")
     st.stop()
-
 model_columns = joblib.load("pickle Files/Random Forest/model_columns.pkl")
 
+# --- PAGE 1: SETTINGS ---
+if page == "⚙️ Model Settings":
+    st.title("⚙️ Engine Configuration")
+    st.session_state['model_choice'] = st.selectbox(
+        "Select Active Model",
+        ["Random Forest (Recommended)", "Linear Regression"]
+    )
+    st.info("Configuration saved for the Prediction Tool.")
 
-# MODEL SELECTION
-
-st.markdown("<h3 style='color:#0b3d91'>Select Prediction Model</h3>", unsafe_allow_html=True)
-
-model_choice = st.selectbox(
-    "",
-    ["Random Forest (Recommended)", "Linear Regression"]
-)
-
-if model_choice == "Random Forest (Recommended)":
-    model = joblib.load("pickle Files/Random Forest/random_forest_model.pkl")
+# --- PAGE 2: PREDICTION TOOL ---
 else:
-    model = joblib.load("pickle Files/Linear Regression/linear_regression_model.pkl")
+    st.markdown("<h1 style='color:#002366;'>🏠 House Price Prediction</h1>", unsafe_allow_html=True)
+    st.write("### Step 1: Define Property Features")
 
-# =====================================
-# PROPERTY DETAILS
-# =====================================
-st.markdown("<h2 style='color:#0b3d91'>Property Details</h2>", unsafe_allow_html=True)
+    # EACH COLUMN BELOW IS NOW A BOX (CARD)
+    col1, col2, col3 = st.columns(3)
 
-# Row 1
-col1, col2, col3 = st.columns(3)
+    with col1:
+        st.markdown("### 📐 Space")
+        area = st.number_input("Living Area (sq ft)", 300, 6000, 1500)
+        basement = st.number_input("Basement Area (sq ft)", 0, 3000, 800)
 
-with col1:
-    area = st.number_input("Living Area (sq ft)", 300, 6000, 1500)
+    with col2:
+        st.markdown("### 🛏️ Rooms")
+        bedrooms = st.number_input("Total Bedrooms", 0, 10, 3)
+        bathrooms = st.number_input("Total Bathrooms", 0.0, 10.0, 2.0)
 
-with col2:
-    bedrooms = st.number_input("Bedrooms", 0, 10, 3)
+    with col3:
+        st.markdown("### 🏗️ Quality")
+        quality = st.select_slider("Build Quality (1-10)", list(range(1, 11)), 5)
+        age = st.number_input("House Age (Years)", 0, 200, 10)
 
-with col3:
-    age = st.number_input("House Age (years)", 0, 200, 10)
+    # Location in its own large box
+    st.markdown("### 📍 Location & Parking")
+    c_loc1, c_loc2 = st.columns(2)
+    with c_loc1:
+        location_columns = [c for c in model_columns if c.startswith("Location_")]
+        locations = [c.replace("Location_", "") for c in location_columns]
+        location = st.selectbox("Select Neighborhood", locations)
+    with c_loc2:
+        garage = st.number_input("Garage Car Capacity", 0, 5, 2)
 
-# Row 2
-col4, col5, col6 = st.columns(3)
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Large Prediction Button
+    if st.button("🚀 RUN PREDICTION ENGINE"):
+        # Load Model
+        choice = st.session_state.get('model_choice', "Random Forest (Recommended)")
+        if choice == "Random Forest (Recommended)":
+            model = joblib.load("pickle Files/Random Forest/random_forest_model.pkl")
+        else:
+            model = joblib.load("pickle Files/Linear Regression/linear_regression_model.pkl")
 
-with col4:
-    quality = st.slider("Overall Quality", 1, 10, 5)
+        # Prepare Data
+        input_data = {
+            "GrLivArea": area, "BedroomAbvGr": bedrooms, "Age": age,
+            "OverallQual": quality, "TotalBathrooms": bathrooms,
+            "GarageCars": garage, "TotalBsmtSF": basement
+        }
+        for col in location_columns: input_data[col] = 0
+        input_data["Location_" + location] = 1
 
-with col5:
-    bathrooms = st.number_input("Total Bathrooms", 0.0, 10.0, 2.0)
+        input_df = pd.DataFrame([input_data]).reindex(columns=model_columns, fill_value=0)
+        prediction = model.predict(input_df)[0]
 
-with col6:
-    garage = st.number_input("Garage Capacity", 0, 5, 2)
-
-# Row 3
-col7, col8 = st.columns(2)
-
-with col7:
-    basement = st.number_input("Basement Area (sq ft)", 0, 3000, 800)
-
-with col8:
-    location_columns = [c for c in model_columns if c.startswith("Location_")]
-    locations = [c.replace("Location_", "") for c in location_columns]
-
-    location = st.selectbox("Location", locations)
-
-
-# PREDICT BUTTON
-
-predict_button = st.button("Predict House Price")
-
-
-# RESULT (BOTTOM)
-
-if predict_button:
-
-    input_data = {
-        "GrLivArea": area,
-        "BedroomAbvGr": bedrooms,
-        "Age": age,
-        "OverallQual": quality,
-        "TotalBathrooms": bathrooms,
-        "GarageCars": garage,
-        "TotalBsmtSF": basement
-    }
-
-    for col in location_columns:
-        input_data[col] = 0
-
-    input_data["Location_" + location] = 1
-
-    input_df = pd.DataFrame([input_data])
-    input_df = input_df.reindex(columns=model_columns, fill_value=0)
-
-    prediction = model.predict(input_df)[0]
-
-    st.markdown("<h2 style='color:#0b3d91'>Estimated Property Value</h2>", unsafe_allow_html=True)
-
-    st.markdown(f"""
-    <div class="result-box">
-        <div style="font-size:18px;color:#555">Predicted Market Price</div>
-        <div class="price-value">$ {prediction:,.2f}</div>
-    </div>
-
-    """, unsafe_allow_html=True)
+        # Massive High-Visibility Result
+        st.markdown(f"""
+        <div class="result-banner">
+            <h2 style="color:white; margin:0;">ESTIMATED MARKET PRICE</h2>
+            <h1 style="color:white; font-size:70px; margin:0;">$ {prediction:,.2f}</h1>
+            <p style="color:#bdc3c7;">Calculated using {choice}</p>
+        </div>
+        """, unsafe_allow_html=True)
