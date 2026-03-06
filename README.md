@@ -67,23 +67,26 @@ The project uses three files:
 | --------------------- | ---------------------------- |
 | train.csv             | Used to train the model      |
 | test.csv              | Used to predict house prices |
-| sample_submission.csv | Format reference for output  |
 
 **Target Column:** SalePrice
 
 **Features include:**
 
- Area (square feet)
+ Living Area (square feet)
  
  Bedrooms
  
  Bathrooms
  
  Location
+
+ House Age
  
- Amenities
- 
- Property characteristics
+ Garage capavity
+
+ Overall Quality
+
+ Basement Area(square feet)
 
 ---
 
