@@ -97,7 +97,7 @@ with st.sidebar:
     )
     
     st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown("<p style='color:white; opacity:0.7; text-align:center;'>Real Estate AI v2.0</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color:white; opacity:0.7; text-align:center;'></p>", unsafe_allow_html=True)
 # Load Column Names
 if not os.path.exists("pickle Files/Random Forest/model_columns.pkl"):
     st.error("Missing Model Files")
@@ -129,7 +129,7 @@ else:
     with col2:
         st.markdown("### 🛏️ Rooms")
         bedrooms = st.number_input("Total Bedrooms", 0, 10, 3)
-        bathrooms = st.number_input("Total Bathrooms", 0.0, 10.0, 2.0)
+        bathrooms = st.number_input("Total Bathrooms", 0, 10, 2)
 
     with col3:
         st.markdown("### 🏗️ Quality")
@@ -177,3 +177,4 @@ else:
             <p style="color:#bdc3c7;">Calculated using {choice}</p>
         </div>
         """, unsafe_allow_html=True)
+
